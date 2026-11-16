@@ -1,0 +1,83 @@
+/* ==========================================================================
+   Mobile & touch refinements (loaded last so these rules win)
+   ========================================================================== */
+
+html { -webkit-tap-highlight-color: rgba(201, 162, 75, 0.2); }
+
+/* Long words, emails and URLs never push the page wider than the screen. */
+.property-card__title, .detail-header h1, .footer__contact li, .contact-item a, .contact-item__value,
+.page-banner h1, .breadcrumb {
+  overflow-wrap: anywhere;
+}
+
+/* Honeypot spam trap: present in the form but invisible to people. */
+.hp-field {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Swipe through gallery photos without blocking vertical scrolling. */
+.gallery__main { touch-action: pan-y; user-select: none; }
+
+.filter-hint { margin: -12px 0 20px; }
+
+/* Touch screens: every control at least 44px tall (Apple/Google guideline). */
+@media (pointer: coarse) {
+  .btn, .chip, .pagination__btn, .icon-btn, .active-filter, .link-btn,
+  .hero-search__tab, select, input[type='text'], input[type='search'], input[type='tel'], input[type='email'] {
+    min-height: 44px;
+  }
+  .icon-btn { min-width: 44px; }
+  .nav__link { padding-top: 13px; padding-bottom: 13px; }
+  .gallery__thumb { min-height: 52px; }
+}
+
+@media (max-width: 768px) {
+  /* iPhone Safari zooms into inputs smaller than 16px; keep them at 16px. */
+  input, select, textarea { font-size: 16px; }
+  .section--flush-top { padding-top: 4px; }
+  .detail-header__price-row .btn { flex-shrink: 0; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.85rem; }
+  .eyebrow { letter-spacing: 0.12em; }
+  .cta-band__actions, .cta-band__actions .btn,
+  .about-intro__actions .btn, .not-found__actions .btn { width: 100%; }
+  .detail-sidebar__quick .btn { padding-left: 12px; padding-right: 12px; }
+  .results-bar__controls { display: grid; grid-template-columns: auto minmax(0, 1fr); }
+  .results-bar__sort { min-width: 0; }
+  .results-bar__sort select { width: 100%; min-width: 0; text-overflow: ellipsis; }
+  .pagination { gap: 4px; }
+  .pagination__btn { min-width: 38px; }
+  .btn { white-space: normal; text-align: center; }
+}
+
+/* Very small phones (320-359px) */
+@media (max-width: 359px) {
+  .container { padding: 0 12px; }
+  .logo__tag { display: none; }
+  .logo__name { font-size: 0.98rem; }
+  .logo { gap: 8px; }
+  .hero { padding: 40px 0 36px; }
+  .hero h1 { font-size: 1.6rem; }
+  .hero-search { padding: 4px 12px 14px; }
+  .hero-search__tab { padding-left: 4px; padding-right: 4px; font-size: 0.9rem; }
+  .type-grid { gap: 8px; }
+  .type-tile { padding: 18px 8px; font-size: 0.82rem; }
+  .property-card__body { padding: 16px; }
+  .detail-card { padding: 18px 14px; }
+  .fact-grid { grid-template-columns: 1fr; }
+  .detail-sidebar__quick { grid-template-columns: 1fr; }
+  .contact-form-card { padding: 20px 14px; }
+  .filter-panel { padding: 18px 14px; }
+  .chip { padding: 7px 12px; }
+  .cta-band { padding: 28px 18px; }
+}
+
+.logo__img { object-fit: contain; border-radius: 10px; }
+.footer__staff { color: #6f7d96; }
+.footer__staff:hover { color: var(--gold-400); }
